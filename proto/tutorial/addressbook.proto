@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+// package 的作用：
+// 1. 避免所有生成类都落到全局命名空间。
+// 2. 后面你在 C++ 里会看到 tutorial::Person / tutorial::AddressBook，
+//    这能帮助你建立“proto package <-> C++ namespace”的映射直觉。
+package tutorial;
+
+// 第一阶段只保留最基本的标量字段。
+// 目标不是覆盖所有 proto 语法，而是先把
+// “schema -> generated class -> serialize/parse” 这条主线跑通。
+message Person {
+  string name = 1;
+  int32  id = 2;
+  string email = 3;
+}
+
+// repeated Person 是第一阶段最值得保留的复杂度。
+// 它能让你在 C++ 里第一次接触 add_people()/people_size()/people(i) 这种 API。
+message AddressBook {
+  repeated Person people = 1;
+}
