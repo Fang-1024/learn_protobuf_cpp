@@ -82,6 +82,7 @@ target_include_directories(pb_core
 target_link_libraries(pb_core
         PUBLIC
         protobuf::libprotobuf
+        learn_cpp::log
 )
 
 # 写消息：构造 message 并写入文件。
@@ -93,7 +94,6 @@ target_link_libraries(addressbook_write
         PRIVATE
         pb_core
         proto_generated
-        learn_cpp::log
 )
 
 # 读消息：从文件读回 message 并打印内容。
@@ -105,5 +105,4 @@ target_link_libraries(addressbook_read
         PRIVATE
         pb_core
         proto_generated
-        learn_cpp::log
 )
