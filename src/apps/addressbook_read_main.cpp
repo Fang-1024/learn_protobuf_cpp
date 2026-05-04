@@ -30,7 +30,7 @@ namespace {
     }
 } // namespace
 
-int main(int argc, char *argv[]) {
+int main(const int argc, char *argv[]) {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
     const std::string input_path = GetInputPath(argc, argv);

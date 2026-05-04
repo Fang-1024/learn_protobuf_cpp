@@ -7,7 +7,7 @@ BUILD_DIR="${ROOT_DIR}/build"
 mkdir -p "${ROOT_DIR}/data/output"
 
 cmake -S "${ROOT_DIR}" -B "${BUILD_DIR}" -DCMAKE_BUILD_TYPE=Debug
-cmake --build "${BUILD_DIR}" -j4
+cmake --build "${BUILD_DIR}" -j$(nproc)
 
 echo
 echo "Build finished."

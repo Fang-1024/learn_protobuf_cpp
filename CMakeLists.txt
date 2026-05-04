@@ -16,7 +16,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # 使用 CMake 的 Protobuf 查找模块。
 # 第一阶段这么写通常在 Linux 环境最直接。
-find_package(Protobuf REQUIRED)
+find_package(Protobuf CONFIG REQUIRED)
 
 # protoc 编译器是 build-time 生成代码必须具备的。
 if (NOT TARGET protobuf::protoc)
@@ -31,6 +31,7 @@ add_subdirectory(lib)
 # 生成出来的 .pb.h / .pb.cc 不应污染源码树，
 # 放到 build/generated 是最清晰的做法。
 set(PROTO_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
+file(MAKE_DIRECTORY "${PROTO_BINARY_DIR}")
 
 # 当前阶段只有一个 proto，后面阶段你会在这里继续追加。
 set(PROTO_FILES
